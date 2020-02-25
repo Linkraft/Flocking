@@ -14,7 +14,10 @@ namespace AI.SteeringBehaviors.StudentAI
         public float FlockRadius { get; set; }
 
         #region TODO
-        public virtual void Update(float deltaTime)
+        public Flock() {
+            // Default constructor
+        }
+        public void Update(float deltaTime)
         {
             // Update goes here
         }
