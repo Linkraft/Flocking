@@ -1,5 +1,5 @@
 # Flocking
-Flocking is a flocking AI program that I worked on during my AI for Games class at the University of Florida.
+Flocking is a flocking AI program that I worked on during my AI for Games class at the University of Florida. All work was done in Flocking.cs, where the program's AI algorithms were implemented.
 
 ## Usage
 
