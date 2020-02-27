@@ -46,9 +46,10 @@ namespace AI.SteeringBehaviors.StudentAI {
         private Vector3 getAverageForward(List<MovingObject> boids) {
             int numBoids = boids.Count;
             Vector3 average = new Vector3(0, 0, 0);
-            foreach (MovingObject boid in boids) {
+
+            foreach (MovingObject boid in boids)
                 average += boid.Velocity;
-            }
+
             average /= numBoids;
             return average;
         }
@@ -56,9 +57,10 @@ namespace AI.SteeringBehaviors.StudentAI {
         private Vector3 getAveragePosition(List<MovingObject> boids) {
             int numBoids = boids.Count;
             Vector3 average = new Vector3(0, 0, 0);
-            foreach (MovingObject boid in boids) {
+
+            foreach (MovingObject boid in boids)
                 average += boid.Position;
-            }
+
             average /= numBoids;
             return average;
         }
@@ -67,9 +69,7 @@ namespace AI.SteeringBehaviors.StudentAI {
         private Vector3 calcAlignmentAccel(MovingObject boid) {
             Vector3 accel = AverageForward / boid.MaxSpeed;
 
-            if (accel.Length > 1) {
-                accel.Normalize();
-            }
+            if (accel.Length > 1) accel.Normalize();
 
             return accel * AlignmentStrength;
         }
@@ -80,9 +80,7 @@ namespace AI.SteeringBehaviors.StudentAI {
             accel.Normalize();
 
             // Set speed based on distance from flock
-            if (distance < FlockRadius) {
-                accel *= distance / FlockRadius;
-            }
+            if (distance < FlockRadius) accel *= distance / FlockRadius;
 
             return accel * CohesionStrength;
         }
@@ -91,8 +89,7 @@ namespace AI.SteeringBehaviors.StudentAI {
             Vector3 sum = new Vector3(0, 0, 0);
 
             foreach (MovingObject sibling in Boids) {
-                if (sibling == boid)
-                    continue;
+                if (sibling == boid) continue;
 
                 Vector3 accel = boid.Position - sibling.Position;
                 float distance = accel.Length;
@@ -107,9 +104,7 @@ namespace AI.SteeringBehaviors.StudentAI {
                 }
             }
 
-            if (sum.Length > 1) {
-                sum.Normalize();
-            }
+            if (sum.Length > 1) sum.Normalize();
 
             return sum * SeparationStrength;
         }
